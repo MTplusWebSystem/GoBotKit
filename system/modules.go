@@ -82,6 +82,25 @@ func Random(params string, custom bool) string{
             return "INVALID"
 	}
 }
+
+func KeyGenerator(token int) string {
+	
+	key := make([]string, 0)
+
+	for i := 0; i < token; i++ {
+        par := ""
+        for j := 0; j < token; j++ {
+            if j <= 1 || j >= 3 {
+                par += Random("a-Z", false)
+            } else {
+                par += Random("0-9", false)
+            }
+        }
+        key = append(key, par)
+    }
+	form := fmt.Sprintf("%s-%s-%s-%s",key[0],key[1],key[2],key[3])
+	return form
+}
 /*
 funções para serem criadas
 
