@@ -1,6 +1,7 @@
 package system
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"regexp"
@@ -9,6 +10,7 @@ import (
 func NilError(msg string , err error) {
 	if err != nil {
 		fmt.Println(msg,err)
+		return
 	}
 }
 
@@ -27,6 +29,15 @@ func Regex(params, text string) string {
     return ""
 }
 
+func WriteJSON(filename string, data interface{}) error {
+	jsonData, err := json.Marshal(data)
+    NilError("Erro ao ler sua interface", err)
+
+    err = ioutil.WriteFile(filename, jsonData, 0644)
+	NilError(fmt.Sprintf("Erro ao escrever no path:%s",filename), err)
+
+    return nil
+}
 /*
 funções para serem criadas
 
@@ -36,7 +47,7 @@ Scan: para leitura simples de arquivos |ok
 
 Regex: Uma forma simples de aplicar regex |ok
 
-WriteJSON: para escrita de arquivos JSON
+WriteJSON: para escrita de arquivos JSON |ok
 
 Random: para geração de valores aleatórios
 
