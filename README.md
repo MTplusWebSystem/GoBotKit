@@ -1,3 +1,7 @@
+
+- **GoBotKit**
+  - Versão: v0.0.0
+
 # Pacote System :v0.1
 
 Este pacote fornece uma coleção de funções úteis para diversas operações no sistema.
@@ -71,3 +75,5 @@ func main() {
 	fmt.Println(chave)
 }
 ```
+
+
