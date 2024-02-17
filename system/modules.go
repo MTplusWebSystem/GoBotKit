@@ -1,6 +1,9 @@
 package system
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+)
 
 func NilError(msg string , err error) {
 	if err != nil {
@@ -8,12 +11,18 @@ func NilError(msg string , err error) {
 	}
 }
 
+func Scan(path string) []byte {
+	content , err := ioutil.ReadFile(path)
+	NilError(fmt.Sprint("Erro ao ler o arquivo %s", path), err)
+	return content
+}
+
 /*
 funções para serem criadas
 
-NilError: simplificar as mensagens de erros e diminuir linhas de código
+NilError: simplificar as mensagens de erros e diminuir linhas de código |ok
 
-Scan: para leitura simples de arquivos
+Scan: para leitura simples de arquivos |ok
 
 Regex: Uma forma simples de aplicar regex
 
