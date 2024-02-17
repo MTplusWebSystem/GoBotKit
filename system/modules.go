@@ -34,7 +34,7 @@ NilError: simplificar as mensagens de erros e diminuir linhas de código |ok
 
 Scan: para leitura simples de arquivos |ok
 
-Regex: Uma forma simples de aplicar regex
+Regex: Uma forma simples de aplicar regex |ok
 
 WriteJSON: para escrita de arquivos JSON
 
