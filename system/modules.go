@@ -4,7 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"regexp"
+	"strconv"
+	"strings"
+	"time"
 )
 
 func NilError(msg string , err error) {
@@ -38,6 +42,46 @@ func WriteJSON(filename string, data interface{}) error {
 
     return nil
 }
+
+func Random(params string, custom bool) string{
+	rand.Seed(time.Now().UnixNano())
+
+	letrasMin := "abcdefghijklmnopqrstuvwxyz"
+	letrasMai := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	letrasMinMai := letrasMin + letrasMai
+	if custom {
+		if params[0:1] != "a" && params[0:1] != "A" {
+			op := ""
+			parts := strings.Split(params, "-")
+			if len(parts) == 2 {
+				start, _ := strconv.Atoi(parts[0])
+				final, _ := strconv.Atoi(parts[1])
+				value :=  rand.Intn(final-start+1) + start
+				op = strconv.Itoa(value)
+			}
+			return op
+		}
+	}
+	switch params{
+		case "a-z":
+            indice := rand.Intn(len(letrasMin))
+			generated := string(letrasMin[indice])
+            return generated
+        case "A-Z":
+            indice := rand.Intn(len(letrasMai))
+			generated := string(letrasMai[indice])
+            return generated
+        case "a-Z":
+            indice := rand.Intn(len(letrasMinMai))
+			generated := string(letrasMinMai[indice])
+            return generated
+        case "0-9":
+            indice := rand.Intn(10)
+            return strconv.Itoa(indice)
+        default:
+            return "INVALID"
+	}
+}
 /*
 funções para serem criadas
 
@@ -49,7 +93,7 @@ Regex: Uma forma simples de aplicar regex |ok
 
 WriteJSON: para escrita de arquivos JSON |ok
 
-Random: para geração de valores aleatórios
+Random: para geração de valores aleatórios |ok
 
 KeyGenerator: para geração de chaves aleatórias
 */
