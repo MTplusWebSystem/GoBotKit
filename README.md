@@ -1,4 +1,53 @@
+# Pacote Botkit :robot:
 
+### Funções atuais
+- SendMessages
+  
+```go
+go func() {
+   bot.Handler("messages", func(event string) {
+       fmt.Println("tipo:messages(",event,")")
+       if event == "olá"{
+          bot.SendMessages("Olá tudo-bem")
+       }
+   })
+}()
+```
+
+### nova função
+
+- SendButton
+
+#### Forma de uso básico
+```go
+go func() {
+	bot.Handler("callback_query",func(event string) {
+		fmt.Println(bot.ChatID)
+		fmt.Println("tipo:callback_query(", event,")")
+		if event == "!cadastro" {
+			bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
+		}
+     })
+}()
+
+go func() {
+	bot.Handler("commands",func(event string) {
+		fmt.Println("tipo:commands(",event,")")
+		if event == "/menu" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cadastrar", "callback_data": "!cadastro"},
+						{"text": "Sair", "callback_data": "!sair"},
+					},
+				},
+			}
+		bot.SendButton("Bem-vindo ao menu",layout)
+		}
+	})
+}()
+
+```
 
 # Pacote Botkit :robot:
 
