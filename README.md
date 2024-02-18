@@ -79,9 +79,8 @@ func main() {
 ```
 
 
----
 
-Para utilizar as funcionalidades do pacote, você pode implementar um loop para receber as atualizações do bot e processá-las conforme necessário. Por exemplo:
+---Para utilizar as funcionalidades do pacote, você pode implementar um loop para receber as atualizações do bot e processá-las conforme necessário. Por exemplo:
 
 ```go
 // Exemplo de loop para processar atualizações do bot
@@ -99,7 +98,6 @@ for {
 ```
 
 Certifique-se de revisar a documentação para garantir que as instruções de uso estejam atualizadas com a implementação mais recente do pacote.
-```
 
 
 # Pacote Requests :arrow_up:
