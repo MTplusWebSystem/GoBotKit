@@ -48,11 +48,6 @@ go func() {
 }()
 
 ```
-
-# Pacote Botkit :robot:
-
-Este pacote oferece funções para criação e interação com bots do Telegram.
-
 ## Estrutura `BotInit` :gear:
 
 Esta estrutura é usada para inicializar e interagir com um bot do Telegram.
