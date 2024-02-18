@@ -47,6 +47,8 @@ func main() {
 							},
 						}
 						bot.SendButton("Bem-vindo ao menu",layout)
+					} else if event == "/start" {
+						bot.SendPhoto("./boas-vinda.jpg","Olá sejá bem-vindo")
 					}
 				})
 			}()
