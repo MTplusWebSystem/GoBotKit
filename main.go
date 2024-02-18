@@ -21,6 +21,17 @@ func main() {
 			go func() {
 				bot.Handler("commands",func(event string) {
 					fmt.Println("tipo:commands(",event,")")
+					if event == "/menu" {
+						layout := map[string]interface{}{
+							"inline_keyboard": [][]map[string]interface{}{
+								{
+									{"text": "Cadastrar", "callback_data": "/purchase"},
+									{"text": "Sair", "callback_data": "<test>"},
+								},
+							},
+						}
+						bot.SendButton("Bem-vindo ao menu",layout)
+					}
 				})
 			}()
 

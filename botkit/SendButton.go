@@ -19,8 +19,8 @@ func (bot *BotInit) SendButton(menu string, layout interface{}) {
 
     params := map[string]interface{}{
         "chat_id":      bot.ChatID,
-        "text":         menu,
         "parse_mode":   "HTML",
+        "text":         menu,
         "reply_markup": replyMarkup,
     }
     requests.POST(send, "", params)
