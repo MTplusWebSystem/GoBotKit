@@ -1,3 +1,105 @@
+
+
+# Pacote Botkit :robot:
+
+Este pacote oferece funções para criação e interação com bots do Telegram.
+
+## Estrutura `BotInit` :gear:
+
+Esta estrutura é usada para inicializar e interagir com um bot do Telegram.
+
+### Campos:
+
+- `Token`: Token de autenticação do bot.
+- `UpdateID`: ID da última atualização recebida.
+- `MessageID`: ID da última mensagem recebida.
+- `ChatID`: ID do chat atual.
+- `CallbackID`: ID do callback atual.
+- `Username`: Nome de usuário do bot.
+- `Text`: Texto da mensagem recebida.
+- `CallbackQuery`: Query do callback.
+- `QueryMessageID`: ID da mensagem associada à query.
+- `ID`: ID do usuário ou do chat.
+
+## Funções Disponíveis:
+
+- `GetUpdates`: Obtém as atualizações mais recentes do bot.
+
+## Como Usar :rocket:
+
+1. Importe o pacote no seu código Go:
+
+   ```go
+   import "github.com/MTplusWebSystem/GoBotKit/botkit"
+   ```
+
+2. Utilize a estrutura `BotInit` para inicializar o bot e interagir com ele.
+
+## Exemplos de Uso :bulb:
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/MTplusWebSystem/GoBotKit/botkit"
+)
+
+
+func main() {
+	bot := botkit.BotInit{
+		Token: "seu-token-aqui",
+	}
+	for {
+		if bot.ReceiveData(){
+			go func() {
+				bot.Handler("callback_query",func(event string) {
+					fmt.Println("tipo:callback_query(", event,")")
+				})
+			}()
+			go func() {
+				bot.Handler("commands",func(event string) {
+					fmt.Println("tipo:commands(",event,")")
+				})
+			}()
+
+			go func() {
+				bot.Handler("messages", func(event string) {
+					fmt.Println("tipo:messages(",event,")")
+					if event == "olá"{
+						bot.SendMessages("Olá tudo-bem")
+					}
+				})
+			}()
+		}
+	}
+}
+
+```
+
+
+
+---Para utilizar as funcionalidades do pacote, você pode implementar um loop para receber as atualizações do bot e processá-las conforme necessário. Por exemplo:
+
+```go
+// Exemplo de loop para processar atualizações do bot
+for {
+    updates, err := bot.GetUpdates()
+    if err != nil {
+        fmt.Println("Erro ao obter atualizações:", err)
+        return
+    }
+
+    for _, update := range updates {
+        // Implemente aqui a lógica para processar cada atualização
+    }
+}
+```
+
+Certifique-se de revisar a documentação para garantir que as instruções de uso estejam atualizadas com a implementação mais recente do pacote.
+
+
 # Pacote Requests :arrow_up:
 
 Este pacote fornece funções para realizar requisições HTTP do tipo GET.
