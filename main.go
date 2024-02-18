@@ -15,7 +15,11 @@ func main() {
 		if bot.ReceiveData(){
 			go func() {
 				bot.Handler("callback_query",func(event string) {
+					fmt.Println(bot.ChatID)
 					fmt.Println("tipo:callback_query(", event,")")
+					if event == "!cadastro" {
+						bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
+					}
 				})
 			}()
 			go func() {
@@ -25,8 +29,8 @@ func main() {
 						layout := map[string]interface{}{
 							"inline_keyboard": [][]map[string]interface{}{
 								{
-									{"text": "Cadastrar", "callback_data": "/purchase"},
-									{"text": "Sair", "callback_data": "<test>"},
+									{"text": "Cadastrar", "callback_data": "!cadastro"},
+									{"text": "Sair", "callback_data": "!sair"},
 								},
 							},
 						}
