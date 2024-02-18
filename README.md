@@ -1,3 +1,58 @@
+# Pacote Requests :arrow_up:
+
+Este pacote fornece funções para realizar requisições HTTP do tipo GET.
+
+## Funções Disponíveis
+
+### `GET` :rocket:
+
+Realiza uma requisição HTTP GET para o URL fornecido.
+
+### `ReadBody` :book:
+
+Lê o corpo da resposta de uma requisição HTTP GET.
+
+### `POST` :rocket:
+
+Realiza uma requisição HTTP POST para o URL fornecido.
+
+### `POSTmultipart` :rocket:
+
+Realiza uma requisição HTTP POST multipart para o URL fornecido.
+
+## Como Usar :rocket:
+
+
+1. Importe o pacote no seu código Go:
+
+```go
+   import "github.com/seu-usuario/seu-repositorio/requests"
+```
+
+# Exemplos de Uso :bulb:
+
+```go
+// Exemplo de utilização da função GET
+response, err := requests.GET("https://exemplo.com/api/dados")
+if err != nil {
+    fmt.Println("Erro na requisição GET:", err)
+    return
+}
+
+// Exemplo de utilização da função ReadBody
+body := requests.ReadBody(response) 
+fmt.Println("Corpo da resposta:", string(body))
+
+// Exemplo de utilização da função POST
+params := map[string]interface{}{"nome": "exemplo", "idade": 30}
+response, err := requests.POST("https://exemplo.com/api/dados", "application/json", params)
+if err != nil {
+    fmt.Println("Erro na requisição POST:", err)
+    return
+}
+```
+
+
 
 # Pacote System :v0.1
 
