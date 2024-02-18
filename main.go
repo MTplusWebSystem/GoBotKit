@@ -2,23 +2,43 @@ package main
 
 import (
 	"fmt"
-	"github.com/MTplusWebSystem/GoBotKit/system"
+
+	"github.com/MTplusWebSystem/GoBotKit/botkit"
 )
 
+
 func main() {
-	data := string(system.Scan("./arquivo.txt"))
-	fmt.Println(data)
+	bot := botkit.BotInit{
+		Token: "5398155583:AAF9SA5cFDb5LLvYoGkQLjhdTw9JVR6R2tg",
+	}
+	for {
+		if bot.ReceiveData(){
+			go func() {
+				bot.Handler("callback_query",func(event string) {
+					fmt.Println("tipo:callback_query(", event,")")
+				})
+			}()
+			go func() {
+				bot.Handler("commands",func(event string) {
+					fmt.Println("tipo:commands(",event,")")
+				})
+			}()
 
-	resultado := system.Regex("[0-9]+", "texto123")
-	fmt.Println(resultado)
-
-	dados := map[string]interface{}{"nome": "Exemplo", "idade": 30}
-	err := system.WriteJSON("dados.json", dados)
-	system.NilError("Erro ao escrever arquivo JSON:", err)
-	
-	aleatorio := system.Random("0-9", false)
-	fmt.Println(aleatorio)
-
-	chave := system.KeyGenerator(4)
-	fmt.Println(chave)
+			go func() {
+				bot.Handler("messages", func(event string) {
+					fmt.Println("tipo:messages(",event,")")
+					if event == "olá"{
+						bot.SendMessages("Olá tudo-bem")
+					}
+				})
+			}()
+		}
+	}
 }
+
+
+
+
+
+
+
