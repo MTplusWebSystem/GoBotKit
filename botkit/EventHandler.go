@@ -5,7 +5,7 @@ func (b *BotInit) Handler(listen string, callbacks func(event string)) {
 	canal_messages := make(chan string)
 	callback_query := make(chan string)
 	go func() {
-		if listen == "callback_query" && len(b.CallbackQuery) > 0 && b.CallbackQuery[0] == '<' {
+		if listen == "callback_query" && len(b.CallbackQuery) > 0 && b.CallbackQuery[0] == '!' {
 			callback_query <- b.CallbackQuery
 		} else if listen == "commands" && len(b.Text) > 0 && b.Text[0] == '/' {
 			canal_commands <- b.Text

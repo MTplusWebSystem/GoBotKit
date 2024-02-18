@@ -27,6 +27,9 @@ func main() {
 			go func() {
 				bot.Handler("messages", func(event string) {
 					fmt.Println("tipo:messages(",event,")")
+					if event == "olá"{
+						bot.SendMessages("Olá tudo-bem")
+					}
 				})
 			}()
 		}
