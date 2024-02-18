@@ -1,6 +1,6 @@
 package botkit
 
-func (b *BotInit) Handler(listen string, callbacks func(input string)) {
+func (b *BotInit) Handler(listen string, callbacks func(event string)) {
 	canal_commands := make(chan string)
 	canal_messages := make(chan string)
 	callback_query := make(chan string)

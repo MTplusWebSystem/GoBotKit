@@ -9,11 +9,26 @@ import (
 
 func main() {
 	bot := botkit.BotInit{
-		Token: "<KEY>",
+		Token: "5398155583:AAF9SA5cFDb5LLvYoGkQLjhdTw9JVR6R2tg",
 	}
 	for {
 		if bot.ReceiveData(){
-			fmt.Println("Online")
+			go func() {
+				bot.Handler("callback_query",func(event string) {
+					fmt.Println(event)
+				})
+			}()
+			go func() {
+				bot.Handler("commands",func(event string) {
+					fmt.Println(event)
+				})
+			}()
+
+			go func() {
+				bot.Handler("messages", func(event string) {
+					fmt.Println(event)
+				})
+			}()
 		}
 	}
 }
