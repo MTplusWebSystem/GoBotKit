@@ -11,7 +11,11 @@ func (b *BotInit) ReceiveData() bool {
 
 	for _, update := range updates {
 		b.ID = update.Message.From.ID
-		b.ChatID = update.Message.Chat.ID
+		if b.ChatID == 0 {
+			b.ChatID = update.CallbackQuery.Message.Chat.ID
+		} else {
+			b.ChatID = update.Message.Chat.ID
+		}
 		b.CallbackID = update.CallbackQuery.Message.Chat.ID
 		if Start == 0 {
 			Start++

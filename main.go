@@ -20,6 +20,18 @@ func main() {
 					if event == "!cadastro" {
 						bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
 					}
+					if event == "!sair"{
+						bot.ReplyToMessage(bot.QueryMessageID, "Tem certeza ?\n")
+						layout := map[string]interface{}{
+							"inline_keyboard": [][]map[string]interface{}{
+								{
+									{"text": "Cancelar", "callback_data": "!cancelar"},
+									{"text": "Continuar", "callback_data": "!continuar"},
+								},
+							},
+						}
+						bot.SendButton("ainda não terminou o cadastro",layout)
+					}
 				})
 			}()
 			go func() {

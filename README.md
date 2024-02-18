@@ -1,24 +1,7 @@
 # Pacote Botkit :robot:
 
 ### Funções atuais
-- SendMessages
-  
-```go
-go func() {
-   bot.Handler("messages", func(event string) {
-       fmt.Println("tipo:messages(",event,")")
-       if event == "olá"{
-          bot.SendMessages("Olá tudo-bem")
-       }
-   })
-}()
-```
-
-### nova função
-
-- SendButton
-
-#### Forma de uso básico
+- **SendMessages**:
 ```go
 go func() {
 	bot.Handler("callback_query",func(event string) {
@@ -30,6 +13,9 @@ go func() {
      })
 }()
 
+```
+- **SendButton**:
+```go
 go func() {
 	bot.Handler("commands",func(event string) {
 		fmt.Println("tipo:commands(",event,")")
@@ -46,7 +32,37 @@ go func() {
 		}
 	})
 }()
+```
 
+
+### nova função
+
+- SendButton
+
+#### Forma de uso básico
+```go
+
+go func() {
+	bot.Handler("callback_query",func(event string) {
+		fmt.Println(bot.ChatID)
+		fmt.Println("tipo:callback_query(", event,")")
+		if event == "!cadastro" {
+			bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
+		}
+		if event == "!sair"{
+			bot.ReplyToMessage(bot.QueryMessageID, "Tem certeza ?\n")
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cancelar", "callback_data": "!cancelar"},
+						{"text": "Continuar", "callback_data": "!continuar"},
+					},
+				},
+			}
+			bot.SendButton("ainda não terminou o cadastro",layout)
+		}
+	})
+}()
 ```
 ## Estrutura `BotInit` :gear:
 
