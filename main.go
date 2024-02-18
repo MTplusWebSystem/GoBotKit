@@ -15,18 +15,18 @@ func main() {
 		if bot.ReceiveData(){
 			go func() {
 				bot.Handler("callback_query",func(event string) {
-					fmt.Println(event)
+					fmt.Println("tipo:callback_query(", event,")")
 				})
 			}()
 			go func() {
 				bot.Handler("commands",func(event string) {
-					fmt.Println(event)
+					fmt.Println("tipo:commands(",event,")")
 				})
 			}()
 
 			go func() {
 				bot.Handler("messages", func(event string) {
-					fmt.Println(event)
+					fmt.Println("tipo:messages(",event,")")
 				})
 			}()
 		}
