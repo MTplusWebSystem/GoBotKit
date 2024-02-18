@@ -7,16 +7,10 @@ import (
 	"github.com/MTplusWebSystem/GoBotKit/system"
 )
 
-func (b *BotInit) ReplyToMessage(messageID , text string) error {
+func (b *BotInit) ReplyToMessage(messageID int , text string) error {
 	Url := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", b.Token)
-	var chat_id int = 0
-	if b.ChatID == 0{
-		chat_id = b.CallbackID
-	} else{
-		chat_id = b.ChatID
-	}
 	params := map[string]interface{}{
-		"chat_id":           chat_id,
+		"chat_id":           b.ChatID,
 		"text":              text,
 		"reply_to_message_id": messageID,
 	}
