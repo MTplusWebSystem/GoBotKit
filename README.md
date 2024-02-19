@@ -1,3 +1,219 @@
+# Pacote Botkit :robot:
+
+### Funções atuais
+- **SendMessages**:
+```go
+go func() {
+	bot.Handler("callback_query",func(event string) {
+		fmt.Println(bot.ChatID)
+		fmt.Println("tipo:callback_query(", event,")")
+		if event == "!cadastro" {
+			bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
+		}
+     })
+}()
+
+```
+- **SendButton**:
+```go
+go func() {
+	bot.Handler("commands",func(event string) {
+		fmt.Println("tipo:commands(",event,")")
+		if event == "/menu" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cadastrar", "callback_data": "!cadastro"},
+						{"text": "Sair", "callback_data": "!sair"},
+					},
+				},
+			}
+		bot.SendButton("Bem-vindo ao menu",layout)
+		}
+	})
+}()
+```
+- **ReplyToMessage**:
+```go
+go func() {
+	bot.Handler("callback_query",func(event string) {
+		fmt.Println(bot.ChatID)
+		fmt.Println("tipo:callback_query(", event,")")
+		if event == "!cadastro" {
+			bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
+		}
+		if event == "!sair"{
+			bot.ReplyToMessage(bot.QueryMessageID, "Tem certeza ?\n")
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cancelar", "callback_data": "!cancelar"},
+						{"text": "Continuar", "callback_data": "!continuar"},
+					},
+				},
+			}
+			bot.SendButton("ainda não terminou o cadastro",layout)
+		}
+	})
+}()
+```
+- **SendPhoto**:
+
+```go
+go func() {
+	bot.Handler("commands",func(event string) {
+		fmt.Println("tipo:commands(",event,")")
+		if event == "/menu" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cadastrar", "callback_data": "!cadastro"},
+						{"text": "Sair", "callback_data": "!sair"},
+					},
+				},
+			}
+			bot.SendButton("Bem-vindo ao menu",layout)
+		} else if event == "/start" {
+			bot.SendPhoto("./boas-vinda.jpg","Olá sejá bem-vindo")
+		}
+	})
+}()
+```
+
+### nova função
+
+- **ReplyToPhotoButton**:
+
+```go
+go func() {
+	bot.Handler("commands",func(event string) {
+		fmt.Println("tipo:commands(",event,")")
+		if event == "/menu" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cadastrar", "callback_data": "!cadastro"},
+						{"text": "Sair", "callback_data": "!sair"},
+					},
+				},
+			}
+			bot.SendButton("Bem-vindo ao menu",layout)
+		} else if event == "/start" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Suporte", "callback_data": "!suporte"},
+						{"text": "Painel", "callback_data": "!painel"},
+					},
+				},
+			}
+			bot.ReplyToPhotoButton("./boas-vinda.jpg",layout)
+
+		}
+	})
+}()
+```
+
+# Pacote Botkit :robot:
+
+Este pacote oferece funções para criação e interação com bots do Telegram.
+
+## Estrutura `BotInit` :gear:
+
+Esta estrutura é usada para inicializar e interagir com um bot do Telegram.
+
+### Campos:
+
+- `Token`: Token de autenticação do bot.
+- `UpdateID`: ID da última atualização recebida.
+- `MessageID`: ID da última mensagem recebida.
+- `ChatID`: ID do chat atual.
+- `CallbackID`: ID do callback atual.
+- `Username`: Nome de usuário do bot.
+- `Text`: Texto da mensagem recebida.
+- `CallbackQuery`: Query do callback.
+- `QueryMessageID`: ID da mensagem associada à query.
+- `ID`: ID do usuário ou do chat.
+
+## Funções Disponíveis:
+
+- `GetUpdates`: Obtém as atualizações mais recentes do bot.
+
+## Como Usar :rocket:
+
+1. Importe o pacote no seu código Go:
+
+   ```go
+   import "github.com/MTplusWebSystem/GoBotKit/botkit"
+   ```
+
+2. Utilize a estrutura `BotInit` para inicializar o bot e interagir com ele.
+
+## Exemplos de Uso :bulb:
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/MTplusWebSystem/GoBotKit/botkit"
+)
+
+
+func main() {
+	bot := botkit.BotInit{
+		Token: "seu-token-aqui",
+	}
+	for {
+		if bot.ReceiveData(){
+			go func() {
+				bot.Handler("callback_query",func(event string) {
+					fmt.Println("tipo:callback_query(", event,")")
+				})
+			}()
+			go func() {
+				bot.Handler("commands",func(event string) {
+					fmt.Println("tipo:commands(",event,")")
+				})
+			}()
+
+			go func() {
+				bot.Handler("messages", func(event string) {
+					fmt.Println("tipo:messages(",event,")")
+					if event == "olá"{
+						bot.SendMessages("Olá tudo-bem")
+					}
+				})
+			}()
+		}
+	}
+}
+
+```
+
+
+
+---Para utilizar as funcionalidades do pacote, você pode implementar um loop para receber as atualizações do bot e processá-las conforme necessário. Por exemplo:
+
+```go
+// Exemplo de loop para processar atualizações do bot
+for {
+    updates, err := bot.GetUpdates()
+    if err != nil {
+        fmt.Println("Erro ao obter atualizações:", err)
+        return
+    }
+
+    for _, update := range updates {
+        // Implemente aqui a lógica para processar cada atualização
+    }
+}
+```
+
+Certifique-se de revisar a documentação para garantir que as instruções de uso estejam atualizadas com a implementação mais recente do pacote.
+
+
 # Pacote Requests :arrow_up:
 
 Este pacote fornece funções para realizar requisições HTTP do tipo GET.
@@ -127,5 +343,4 @@ func main() {
 	fmt.Println(chave)
 }
 ```
-
 
