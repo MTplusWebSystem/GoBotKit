@@ -6,7 +6,6 @@ import (
 	"io"
 	"mime/multipart"
 	"os"
-
 	"github.com/MTplusWebSystem/GoBotKit/requests"
 	"github.com/MTplusWebSystem/GoBotKit/system"
 )
@@ -36,7 +35,6 @@ func (b *BotInit) SendPhoto(photoPath, caption string) error {
 
 	var contenttype string = writer.FormDataContentType()
 	requests.POSTMultipart(Url,contenttype,body)
-
 	
 	return nil
 }
