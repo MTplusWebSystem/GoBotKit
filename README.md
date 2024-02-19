@@ -33,15 +33,8 @@ go func() {
 	})
 }()
 ```
-
-
-### nova função
-
-- SendButton
-
-#### Forma de uso básico
+- **ReplyToMessage**:
 ```go
-
 go func() {
 	bot.Handler("callback_query",func(event string) {
 		fmt.Println(bot.ChatID)
@@ -60,6 +53,31 @@ go func() {
 				},
 			}
 			bot.SendButton("ainda não terminou o cadastro",layout)
+		}
+	})
+}()
+```
+
+### nova função
+
+- **SendButton**:
+
+```go
+go func() {
+	bot.Handler("commands",func(event string) {
+		fmt.Println("tipo:commands(",event,")")
+		if event == "/menu" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cadastrar", "callback_data": "!cadastro"},
+						{"text": "Sair", "callback_data": "!sair"},
+					},
+				},
+			}
+			bot.SendButton("Bem-vindo ao menu",layout)
+		} else if event == "/start" {
+			bot.SendPhoto("./boas-vinda.jpg","Olá sejá bem-vindo")
 		}
 	})
 }()
