@@ -47,6 +47,17 @@ func main() {
 							},
 						}
 						bot.SendButton("Bem-vindo ao menu",layout)
+					} else if event == "/start" {
+						layout := map[string]interface{}{
+							"inline_keyboard": [][]map[string]interface{}{
+								{
+									{"text": "Suporte", "callback_data": "!suporte"},
+									{"text": "Painel", "callback_data": "!painel"},
+								},
+							},
+						}
+						bot.ReplyToPhotoButton("./boas-vinda.jpg",layout)
+
 					}
 				})
 			}()
