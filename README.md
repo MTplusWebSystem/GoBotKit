@@ -57,9 +57,6 @@ go func() {
 	})
 }()
 ```
-
-### nova função
-
 - **SendPhoto**:
 
 ```go
@@ -78,6 +75,40 @@ go func() {
 			bot.SendButton("Bem-vindo ao menu",layout)
 		} else if event == "/start" {
 			bot.SendPhoto("./boas-vinda.jpg","Olá sejá bem-vindo")
+		}
+	})
+}()
+```
+
+### nova função
+
+- **ReplyToPhotoButton**:
+
+```go
+go func() {
+	bot.Handler("commands",func(event string) {
+		fmt.Println("tipo:commands(",event,")")
+		if event == "/menu" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cadastrar", "callback_data": "!cadastro"},
+						{"text": "Sair", "callback_data": "!sair"},
+					},
+				},
+			}
+			bot.SendButton("Bem-vindo ao menu",layout)
+		} else if event == "/start" {
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Suporte", "callback_data": "!suporte"},
+						{"text": "Painel", "callback_data": "!painel"},
+					},
+				},
+			}
+			bot.ReplyToPhotoButton("./boas-vinda.jpg",layout)
+
 		}
 	})
 }()
