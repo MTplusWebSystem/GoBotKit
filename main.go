@@ -37,7 +37,20 @@ func main() {
 			go func() {
 				bot.Handler("commands", func(event string) {
 					fmt.Println("tipo:commands(", event, ")")
-					if event == "/menu" {
+
+					if event == "/submenu" {
+						layout := map[string]interface{}{
+							"keyboard": [][]map[string]interface{}{
+								{
+									{"text": "Suporte"},
+									{"text": "Painel","callback_data": "!sair"},
+								},
+							},
+							"resize_keyboard":   true,
+							"one_time_keyboard": true,
+						}						
+                        bot.KeyboardButton("Clique no botão ao lado esquerdo do emojii ", layout)
+                    }else if event == "/menu" {
 						layout := map[string]interface{}{
 							"inline_keyboard": [][]map[string]interface{}{
 								{

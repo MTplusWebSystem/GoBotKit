@@ -12,7 +12,6 @@ func (b *BotInit) Handler(listen string, callbacks func(event string)) {
 		} else if listen == "messages" && len(b.Text) > 0 && b.Text[0] != '/' {
 			canal_messages <- b.Text
 		}
-
 	}()
 	select {
 	case command := <-canal_commands:

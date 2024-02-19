@@ -13,23 +13,23 @@ import (
 /*
 Criando as funçoes para criação de bot
 
-GetUpdates
+GetUpdates |ok
 
-ReceiveData
+ReceiveData |ok
 
-SendMessage
+SendMessage |ok
 
-DeleteMessage
+DeleteMessage |ok
 
 EditMessage -> fica para proxima atualização
 
-SendPhoto
+SendPhoto |ok
 
 SendAudio -> fica para proxima atualização
 
 SendDocument -> fica para proxima atualização
 
-SendSticker
+SendSticker |ok
 
 SendVideo -> fica para proxima atualização
 
@@ -41,9 +41,9 @@ InlineKeyboardMarkup
 
 ReplayButton
 
-ReplayToMessage
+ReplayToMessage | ok
 
-ReplayToPhotoButton
+ReplayToPhotoButton |ok
 */
 
 type BotInit struct {

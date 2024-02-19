@@ -9,20 +9,20 @@ import (
 )
 
 func (b *BotInit) DeleteMessage(messageID int) error {
-    Url := fmt.Sprintf("https://api.telegram.org/bot%s/deleteMessage", b.Token)
-    params := map[string]interface{}{
-        "chat_id":    b.ChatID,
-        "message_id": messageID,
-    }
+	Url := fmt.Sprintf("https://api.telegram.org/bot%s/deleteMessage", b.Token)
+	params := map[string]interface{}{
+		"chat_id":    b.ChatID,
+		"message_id": messageID,
+	}
 
-    resp, err := requests.POST(Url, "application/json", params)
-    system.NilError("", err)
-    
-    defer resp.Body.Close()
+	resp, err := requests.POST(Url, "application/json", params)
+	system.NilError("", err)
 
-    if resp.StatusCode != http.StatusOK {
-        return fmt.Errorf("Erro ao excluir a mensagem. Código de status: %d", resp.StatusCode)
-    }
+	defer resp.Body.Close()
 
-    return nil
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("Erro ao excluir a mensagem. Código de status: %d", resp.StatusCode)
+	}
+
+	return nil
 }
