@@ -37,4 +37,3 @@ func (b *BotInit) SendPhoto(photoPath, caption string) error {
 	requests.POSTMultipart(Url,contenttype,body)
 	
 	return nil
-}
