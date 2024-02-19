@@ -60,7 +60,7 @@ go func() {
 
 ### nova função
 
-- **SendButton**:
+- **SendPhoto**:
 
 ```go
 go func() {
