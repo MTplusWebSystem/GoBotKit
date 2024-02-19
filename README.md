@@ -80,8 +80,6 @@ go func() {
 }()
 ```
 
-### nova função
-
 - **ReplyToPhotoButton**:
 
 ```go
@@ -114,6 +112,22 @@ go func() {
 }()
 ```
 
+### nova função
+
+- **SendSticker**:
+
+```go
+go func() {
+	bot.Handler("messages", func(event string) {
+		fmt.Println("tipo:messages(",event,")")
+			if event == "olá"{
+				bot.SendMessages("Olá tudo-bem")
+			} else if event == "stiker"{
+		bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
+		}
+	})
+}()
+```
 # Pacote Botkit :robot:
 
 Este pacote oferece funções para criação e interação com bots do Telegram.

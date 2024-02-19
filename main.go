@@ -67,6 +67,8 @@ func main() {
 					fmt.Println("tipo:messages(",event,")")
 					if event == "olá"{
 						bot.SendMessages("Olá tudo-bem")
+					} else if event == "stiker"{
+						bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
 					}
 				})
 			}()
