@@ -114,16 +114,19 @@ go func() {
 
 ### nova função
 
-- **SendSticker**:
+- **DeleteMessage**:
 
 ```go
 go func() {
 	bot.Handler("messages", func(event string) {
-		fmt.Println("tipo:messages(",event,")")
-			if event == "olá"{
-				bot.SendMessages("Olá tudo-bem")
-			} else if event == "stiker"{
-		bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
+		fmt.Println("tipo:messages(", event, ")")
+		if event == "olá" {
+			bot.SendMessages("Olá tudo-bem")
+		} else if event == "stiker" {
+			bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
+			for i := 0; i < 2; i++ {
+				bot.DeleteMessage(bot.MessageID - i)
+			}
 		}
 	})
 }()
