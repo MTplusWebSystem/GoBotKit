@@ -13,27 +13,27 @@ func main() {
 	}
 	for {
 		if bot.ReceiveData() {
-			go func() {
-				bot.Handler("callback_query", func(event string) {
-					fmt.Println(bot.ChatID)
-					fmt.Println("tipo:callback_query(", event, ")")
-					if event == "!suporte" {
-						bot.ForceReplyToMessage(bot.QueryMessageID ,"Nome do usúario")
-					}
-					if event == "!sair" {
-						bot.ReplyToMessage(bot.QueryMessageID, "Tem certeza ?\n")
-						layout := map[string]interface{}{
-							"inline_keyboard": [][]map[string]interface{}{
-								{
-									{"text": "Cancelar", "callback_data": "!cancelar"},
-									{"text": "Continuar", "callback_data": "!continuar"},
-								},
-							},
-						}
-						bot.SendButton("ainda não terminou o cadastro", layout)
-					}
-				})
-			}()
+go func() {
+	bot.Handler("callback_query", func(event string) {
+		fmt.Println(bot.ChatID)
+		fmt.Println("tipo:callback_query(", event, ")")
+		if event == "!suporte" {
+			bot.ForceReplyToMessage(bot.QueryMessageID ,"Nome do usúario")
+		}
+		if event == "!sair" {
+			bot.ReplyToMessage(bot.QueryMessageID, "Tem certeza ?\n")
+			layout := map[string]interface{}{
+				"inline_keyboard": [][]map[string]interface{}{
+					{
+						{"text": "Cancelar", "callback_data": "!cancelar"},
+						{"text": "Continuar", "callback_data": "!continuar"},
+					},
+				},
+			}
+			bot.SendButton("ainda não terminou o cadastro", layout)
+		}
+	})
+}()
 			go func() {
 				bot.Handler("commands", func(event string) {
 					fmt.Println("tipo:commands(", event, ")")

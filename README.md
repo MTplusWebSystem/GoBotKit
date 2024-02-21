@@ -112,7 +112,7 @@ go func() {
 }()
 ```
 
-- **bot.DeleteMessage**:
+- **DeleteMessage**:
 
 ```go
 go func() {
@@ -129,8 +129,6 @@ go func() {
 	})
 }()
 ```
-### nova função
-
 - **KeyboardButton**:
 
 ```go
@@ -153,6 +151,39 @@ go func() {
 	})
 }()	
 ```
+### nova função
+
+- **ForceReplyToMessage**:
+
+```go
+go func() {
+	bot.Handler("callback_query", func(event string) {
+		fmt.Println(bot.ChatID)
+		fmt.Println("tipo:callback_query(", event, ")")
+		if event == "!suporte" {
+			bot.ForceReplyToMessage(bot.QueryMessageID ,"Nome do usúario")
+		}
+	})
+}()
+go func() {
+	bot.Handler("commands", func(event string) {
+		fmt.Println("tipo:commands(", event, ")")
+		if event == "/FORCE"{
+			layout := map[string]interface{}{
+                "inline_keyboard": [][]map[string]interface{}{
+                        {
+                            {"text": "Suporte", "callback_data": "!suporte"},
+                            {"text": "Painel", "callback_data": "!painel"},
+                         },
+                    },
+                 }
+            bot.SendButton("Menu", layout)
+		}
+	})
+}()	
+```
+
+
 # Pacote Botkit :robot:
 
 Este pacote oferece funções para criação e interação com bots do Telegram.
