@@ -17,8 +17,8 @@ func main() {
 				bot.Handler("callback_query", func(event string) {
 					fmt.Println(bot.ChatID)
 					fmt.Println("tipo:callback_query(", event, ")")
-					if event == "!cadastro" {
-						bot.SendMessages("Nome: \nSobre nome: \n idade: \n")
+					if event == "!suporte" {
+						bot.ForceReplyToMessage(bot.QueryMessageID ,"Nome do usúario")
 					}
 					if event == "!sair" {
 						bot.ReplyToMessage(bot.QueryMessageID, "Tem certeza ?\n")
@@ -71,6 +71,16 @@ func main() {
 						}
 						bot.ReplyToPhotoButton("./boas-vinda.jpg", layout)
 
+					} else if event == "/FORCE"{
+						layout := map[string]interface{}{
+                            "inline_keyboard": [][]map[string]interface{}{
+                                {
+                                    {"text": "Suporte", "callback_data": "!suporte"},
+                                    {"text": "Painel", "callback_data": "!painel"},
+                                },
+                            },
+                        }
+                        bot.SendButton("Menu", layout)
 					}
 				})
 			}()
@@ -78,8 +88,9 @@ func main() {
 			go func() {
 				bot.Handler("messages", func(event string) {
 					fmt.Println("tipo:messages(", event, ")")
-					if event == "olá" {
+					if event == "force" {
 						bot.SendMessages("Olá tudo-bem")
+						bot.ForceReplyToMessage(bot.MessageID, ":")
 					} else if event == "stiker" {
 						bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
 						for i := 0; i < 2; i++ {

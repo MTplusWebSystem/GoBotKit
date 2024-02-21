@@ -20,3 +20,4 @@ func (b *BotInit) ReplyToMessage(messageID int , text string) error {
 
 	return nil
 }
+
