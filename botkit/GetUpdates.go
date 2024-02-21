@@ -56,6 +56,7 @@ type BotInit struct {
 	Text         string
 	CallbackQuery string
 	QueryMessageID int
+	ReplyMessageText string
 	ID           int
 }
 
@@ -78,6 +79,9 @@ type Update struct {
 			Username  string `json:"username"`
 			Type      string `json:"type"`
 		} `json:"chat"`
+		Reply_to_message struct{
+			Text string `json:"text"`
+		} `json:"reply_to_message"`
 		Date int    `json:"date"`
 		Text string `json:"text"`
 	} `json:"message"`

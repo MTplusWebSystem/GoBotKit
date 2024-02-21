@@ -25,6 +25,7 @@ func (b *BotInit) ReceiveData() bool {
 				b.UpdateID = update.UpdateID
 				b.MessageID = update.Message.MessageID 
 				b.Text = update.Message.Text
+				b.ReplyMessageText = update.Message.Reply_to_message.Text
 				b.CallbackQuery = update.CallbackQuery.Data
 				b.QueryMessageID = update.CallbackQuery.Message.MessageID
 				return true

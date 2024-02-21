@@ -151,8 +151,6 @@ go func() {
 	})
 }()	
 ```
-### nova função
-
 - **ForceReplyToMessage**:
 
 ```go
@@ -182,6 +180,11 @@ go func() {
 	})
 }()	
 ```
+### Novo Campo adicionado 
+- **ReplyMessageText**:
+	para pegar um texto após um Reply ou ForceReplay
+
+
 
 
 # Pacote Botkit :robot:

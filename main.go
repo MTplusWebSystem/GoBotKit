@@ -86,6 +86,9 @@ go func() {
 			}()
 
 			go func() {
+				if bot.ReplyMessageText == "Nome do usúario"{
+					fmt.Println("O nome de usúario foi",bot.Text)
+				}
 				bot.Handler("messages", func(event string) {
 					fmt.Println("tipo:messages(", event, ")")
 					if event == "force" {
