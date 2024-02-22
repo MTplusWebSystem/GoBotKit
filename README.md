@@ -2,9 +2,18 @@
 ### Nova função
 - **ForceReply**:
 ```go
-bot.ForceReply("Nova função")
+bot.SendDocument("./caminho", "descrição", "tipo")
 ```
-para força o replay direto da mensagem
+- **Tipos suportados**:
+ - `pdf`    
+ - `zip`  
+ - `tar.gz`
+ - `sql`   
+ - `txt`   
+ - `tar`    
+ - `json`
+
+
 ### Funções atuais
 - **SendMessages**:
 ```go

@@ -91,8 +91,8 @@ go func() {
 				}
 				bot.Handler("messages", func(event string) {
 					fmt.Println("tipo:messages(", event, ")")
-					if event == "force" {
-						bot.ForceReply("nome de Usuarios")
+					if event == "projeto" {
+						bot.SendDocument("./GoBotKit-main.zip", "projeto GoBotKit", "zip")
 					} else if event == "stiker" {
 						bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
 						for i := 0; i < 2; i++ {
