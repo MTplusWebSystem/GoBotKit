@@ -1,5 +1,10 @@
 # Pacote Botkit :robot:
-
+### Nova função
+- **ForceReply**:
+```go
+bot.ForceReply("Nova função")
+```
+para força o replay direto da mensagem
 ### Funções atuais
 - **SendMessages**:
 ```go
@@ -180,12 +185,7 @@ go func() {
 	})
 }()	
 ```
-### Nova função
-- **SendChatAction**:
-```go
-bot.SendChatAction()
-```
-para sibolizar que o bot está digitando...
+
 
 # Pacote Botkit :robot:
 
