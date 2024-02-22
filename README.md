@@ -180,12 +180,12 @@ go func() {
 	})
 }()	
 ```
-### Novo Campo adicionado 
-- **ReplyMessageText**:
-	para pegar um texto após um Reply ou ForceReplay
-
-
-
+### Nova função
+- **SendChatAction**:
+```go
+bot.SendChatAction()
+```
+para sibolizar que o bot está digitando...
 
 # Pacote Botkit :robot:
 
@@ -204,6 +204,7 @@ Esta estrutura é usada para inicializar e interagir com um bot do Telegram.
 - `CallbackID`: ID do callback atual.
 - `Username`: Nome de usuário do bot.
 - `Text`: Texto da mensagem recebida.
+- `ReplyMessageText`:Para pegar um texto após um Reply ou ForceReplay
 - `CallbackQuery`: Query do callback.
 - `QueryMessageID`: ID da mensagem associada à query.
 - `ID`: ID do usuário ou do chat.

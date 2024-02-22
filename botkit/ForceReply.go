@@ -1,8 +1,9 @@
 package botkit
 
 import (
-    "fmt"
-    "github.com/MTplusWebSystem/GoBotKit/requests"
+	"fmt"
+
+	"github.com/MTplusWebSystem/GoBotKit/requests"
 )
 
 func (b *BotInit) ForceReply(messageID int) error {
@@ -15,5 +16,6 @@ func (b *BotInit) ForceReply(messageID int) error {
         },
     }
     requests.POST(Url, "", params)
+
     return nil
 }
