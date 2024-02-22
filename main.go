@@ -92,8 +92,7 @@ go func() {
 				bot.Handler("messages", func(event string) {
 					fmt.Println("tipo:messages(", event, ")")
 					if event == "force" {
-						bot.SendMessages("Olá tudo-bem")
-						bot.ForceReply(bot.MessageID)
+						bot.ForceReply("nome de Usuarios")
 					} else if event == "stiker" {
 						bot.SendSticker("CAACAgIAAxkBAAIFD2XSt7jvTz70u4qx4tMdF8GG0jFPAALOBQAClvoSBSyTK1YenM2tNAQ")
 						for i := 0; i < 2; i++ {
