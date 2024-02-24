@@ -1,18 +1,13 @@
 # Pacote Botkit :robot:
-### Nova função
-- **ForceReply**:
+### Correção do SendMessages agora aceita markdown e nome HTML
+- **Com parseMODE**:
 ```go
-bot.SendDocument("./caminho", "descrição", "tipo")
+bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```","markdown")
 ```
-- **Tipos suportados**:
- - `pdf`    
- - `zip`  
- - `tar.gz`
- - `sql`   
- - `txt`   
- - `tar`    
- - `json`
-
+- **Sem parseMODE**:
+```go
+bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```")
+```
 
 ### Funções atuais
 - **SendMessages**:
@@ -26,6 +21,20 @@ go func() {
 		}
      })
 }()
+
+- **ForceReply**:
+```go
+bot.SendDocument("./caminho", "descrição", "tipo")
+```
+- **Tipos suportados**:
+ - `pdf`    
+ - `zip`  
+ - `tar.gz`
+ - `sql`   
+ - `txt`   
+ - `tar`    
+ - `json`
+
 
 ```
 - **SendButton**:

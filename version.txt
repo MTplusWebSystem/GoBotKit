@@ -1,1 +1,1 @@
-Versão do Pacote GoBotKit: v0.1.4
+Versão do Pacote GoBotKit: v0.1.5

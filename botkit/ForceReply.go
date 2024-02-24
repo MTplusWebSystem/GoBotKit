@@ -2,7 +2,6 @@ package botkit
 
 import (
 	"fmt"
-
 	"github.com/MTplusWebSystem/GoBotKit/requests"
 )
 
