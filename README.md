@@ -2,13 +2,18 @@
 ### Correção do SendMessages agora aceita markdown e nome HTML
 - **Com parseMODE**:
 ```go
+bot.SendButton("Bem-vindo ao menu", layout,"markdown")
+```
+```go
 bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```","markdown")
 ```
 - **Sem parseMODE**:
 ```go
 bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```")
 ```
-
+```go
+bot.SendButton("Bem-vindo ao menu", layout)
+```
 ### Funções atuais
 - **SendMessages**:
 ```go

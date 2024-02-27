@@ -52,6 +52,7 @@ type BotInit struct {
 	MessageID    int
 	ChatID       int
 	CallbackID   int
+	IsNewChat    bool
 	Username     string
 	Text         string
 	CallbackQuery string
@@ -73,6 +74,7 @@ type Update struct {
 			LanguageCode string `json:"language_code"`
 		} `json:"from"`
 		Chat struct {
+			IsNewChat bool   `json:"is_new_chat"`
 			ID        int    `json:"id"`
 			FirstName string `json:"first_name"`
 			LastName  string `json:"last_name"`

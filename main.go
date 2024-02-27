@@ -7,9 +7,13 @@ import (
 	"github.com/MTplusWebSystem/GoBotKit/botkit"
 )
 
+var (
+	StartUser bool
+)
 func main() {
+	
 	bot := botkit.BotInit{
-		Token: "5398155583:AAF9SA5cFDb5LLvYoGkQLjhdTw9JVR6R2tg",
+		Token: "6308790643:AAEwF-6dWmD3i5_QUrPPtrekfsE7EBiDaes",
 	}
 	for {
 		if bot.ReceiveData() {
@@ -61,15 +65,8 @@ go func() {
 						}
 						bot.SendButton("Bem-vindo ao menu", layout)
 					} else if event == "/start" {
-						layout := map[string]interface{}{
-							"inline_keyboard": [][]map[string]interface{}{
-								{
-									{"text": "Suporte", "callback_data": "!suporte"},
-									{"text": "Painel", "callback_data": "!painel"},
-								},
-							},
-						}
-						bot.ReplyToPhotoButton("./boas-vinda.jpg", layout)
+						bot.SendMessages(fmt.Sprintf("Usuário:",bot.IsNewChat))
+						StartUser  = bot.IsNewChat
 
 					} else if event == "/FORCE"{
 						layout := map[string]interface{}{
@@ -93,6 +90,7 @@ go func() {
 					switch event {
 						case "negrito":
 							bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```")
+
 					}
 					fmt.Println("tipo:messages(", event, ")")
 					if event == "projeto" {

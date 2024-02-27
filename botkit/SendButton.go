@@ -8,9 +8,12 @@ import (
 	"github.com/MTplusWebSystem/GoBotKit/system"
 )
 
-func (bot *BotInit) SendButton(menu string, layout interface{}) {
+func (bot *BotInit) SendButton(menu string, layout interface{},format... string) {
     send := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", bot.Token)
-    
+    parseMode := "HTML"
+    if len(format) > 0 {
+        parseMode = format[0]
+    }
     var replyMarkup map[string]interface{}
     replyMarkupBytes, err := json.Marshal(layout)
 	system.NilError("Erro ao converter layout para JSON:", err)
@@ -19,7 +22,7 @@ func (bot *BotInit) SendButton(menu string, layout interface{}) {
 
     params := map[string]interface{}{
         "chat_id":      bot.ChatID,
-        "parse_mode":   "HTML",
+        "parse_mode":   parseMode,
         "text":         menu,
         "reply_markup": replyMarkup,
     }

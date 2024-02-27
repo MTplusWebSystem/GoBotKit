@@ -28,6 +28,7 @@ func (b *BotInit) ReceiveData() bool {
 				b.ReplyMessageText = update.Message.Reply_to_message.Text
 				b.CallbackQuery = update.CallbackQuery.Data
 				b.QueryMessageID = update.CallbackQuery.Message.MessageID
+				b.IsNewChat = update.Message.Chat.IsNewChat
 				return true
 			}
 		}
