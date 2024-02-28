@@ -12,7 +12,7 @@ switch bot.Document.FileName{
 ```go
 switch bot.Document.FileName{
 	case "cirador.jpg":
-		bot.GetFile("./storage")
+		bot.GetFile()
 }
 ```
 ### :warning: Alertar não pode se usar dentro do `bot.Handler()`
