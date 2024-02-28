@@ -1,5 +1,30 @@
 # Pacote Botkit :robot:
-### Correção do SendMessages agora aceita markdown e nome HTML
+### Nova função
+- **GetFile**:
+- `Com path`:Pode passar um path onde o conteúdo do arquivo vai ser salvo
+```go
+switch bot.Document.FileName{
+	case "cirador.jpg":
+		bot.GetFile("./storage")
+}
+```
+- `Sem path`:O conteúdo do arquivo vai ser salvo no mesmo local da execução
+```go
+switch bot.Document.FileName{
+	case "cirador.jpg":
+		bot.GetFile("./storage")
+}
+```
+### :warning: Alertar não pode se usar dentro do `bot.Handler()`
+##### Parametro document
+- **Document**:
+- `Status bool`
+- `FileName string` 
+- `MimeType string `
+- `FileID string `
+- `FileUniqueID string `
+- `FileSize int ` 
+### Funções atuais
 - **Com parseMODE**:
 ```go
 bot.SendButton("Bem-vindo ao menu", layout,"markdown")
@@ -14,7 +39,6 @@ bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```")
 ```go
 bot.SendButton("Bem-vindo ao menu", layout)
 ```
-### Funções atuais
 - **SendMessages**:
 ```go
 go func() {

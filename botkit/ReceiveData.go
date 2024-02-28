@@ -28,12 +28,17 @@ func (b *BotInit) ReceiveData() bool {
 				b.ReplyMessageText = update.Message.Reply_to_message.Text
 				b.CallbackQuery = update.CallbackQuery.Data
 				b.QueryMessageID = update.CallbackQuery.Message.MessageID
-				b.IsNewChat = update.Message.Chat.IsNewChat
+				b.IsNewChat = update.Message.Chat.IsNewChat 
+				b.Document.Status =true
+				b.Document.FileName = update.Message.Document.FileName
+				b.Document.FileSize = update.Message.Document.FileSize
+				b.Document.FileID = update.Message.Document.FileID
+				b.Document.FileUniqueID = update.Message.Document.FileUniqueID
+				b.Document.MimeType = update.Message.Document.MimeType
 				return true
 			}
 		}
-
+		b.Document.Status = false
 	}
-
 	return false
 }

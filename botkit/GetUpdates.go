@@ -53,6 +53,14 @@ type BotInit struct {
 	ChatID       int
 	CallbackID   int
 	IsNewChat    bool
+	Document struct{
+		Status bool
+		FileName string 
+		MimeType string 
+		FileID string 
+		FileUniqueID string 
+		FileSize int 
+	}
 	Username     string
 	Text         string
 	CallbackQuery string
@@ -81,6 +89,13 @@ type Update struct {
 			Username  string `json:"username"`
 			Type      string `json:"type"`
 		} `json:"chat"`
+		Document struct {
+			FileName string `json:"file_name"`
+			MimeType string `json:"mime_type"`
+			FileID string `json:"file_id"`
+			FileUniqueID string `json:"file_unique_id"`
+			FileSize int `json:"file_size"`
+		} `json:"document"`
 		Reply_to_message struct{
 			Text string `json:"text"`
 		} `json:"reply_to_message"`

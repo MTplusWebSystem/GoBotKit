@@ -13,9 +13,10 @@ var (
 func main() {
 	
 	bot := botkit.BotInit{
-		Token: "6308790643:AAEwF-6dWmD3i5_QUrPPtrekfsE7EBiDaes",
+		Token: "5398155583:AAF9SA5cFDb5LLvYoGkQLjhdTw9JVR6R2tg",
 	}
 	for {
+		
 		if bot.ReceiveData() {
 go func() {
 	bot.Handler("callback_query", func(event string) {
@@ -42,6 +43,11 @@ go func() {
 				bot.Handler("commands", func(event string) {
 					fmt.Println("tipo:commands(", event, ")")
 
+					switch event{
+						case "/send":
+							bot.SendMessages("Envie o arquivo")
+							
+					}
 					if event == "/submenu" {
 						layout := map[string]interface{}{
 							"keyboard": [][]map[string]interface{}{
@@ -53,7 +59,7 @@ go func() {
 							"resize_keyboard":   true,
 							"one_time_keyboard": true,
 						}						
-                        bot.KeyboardButton("Clique no botão ao lado esquerdo do emojii ", layout)
+                        bot.KeyboardButton("Clique no botão ao lado esquerdo do emoji ", layout)
                     }else if event == "/menu" {
 						layout := map[string]interface{}{
 							"inline_keyboard": [][]map[string]interface{}{
@@ -86,7 +92,12 @@ go func() {
 				if bot.ReplyMessageText == "Nome do usúario"{
 					fmt.Println("O nome de usúario foi",bot.Text)
 				}
+				switch bot.Document.FileName{
+					case "logo.jpg":
+						bot.GetFile("./storage")
+				}
 				bot.Handler("messages", func(event string) {
+					
 					switch event {
 						case "negrito":
 							bot.SendMessages("```go \n fmt.Println(O nome de usúario foi,bot.Text)```")
