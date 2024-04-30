@@ -4,7 +4,7 @@
 - `Com path`:Pode passar um path onde o conteúdo do arquivo vai ser salvo
 ```go
 switch bot.Document.FileName{
-	case "cirador.jpg":
+	case "criador.jpg":
 		bot.GetFile("./storage")
 }
 ```
