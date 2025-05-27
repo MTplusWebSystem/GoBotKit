@@ -1,0 +1,5 @@
+intenal_files/*
+go.sum
+./pkg*
+main.go
+intenal_files/GoBotKit/
