@@ -184,5 +184,5 @@ Se o token for válido, você receberá informações sobre o bot. Caso contrár
 
 - [Documentação Oficial de Mini Apps do Telegram](https://core.telegram.org/bots/webapps)
 - [Documentação da API do Telegram](https://core.telegram.org/bots/api)
-- [Uso rápido](https://github.com/MTplusWebSystem/GoBotKit/cmd/test_miniApp.go)
-- [Código do MicroServer](https://github.com/MTplusWebSystem/GoBotKit/botkit/MicroServer.go)
+- [Uso rápido](https://github.com/MTplusWebSystem/GoBotKit/blob/main/cmd/test_miniApp.go)
+- [Código do MicroServer](https://github.com/MTplusWebSystem/GoBotKit/blob/main/botkit/MicroServer.go)

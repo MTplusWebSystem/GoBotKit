@@ -18,6 +18,14 @@ go get https://github.com/MTplusWebSystem/GoBotKit
 - 🔹 Tratamento de eventos (mensagens, cliques e comandos)
 - 🔹 Obtenção de arquivos enviados para o bot
 
+## Todas documentações 
+
+```bash
+https://github.com/MTplusWebSystem/GoBotKit/tree/main/docs
+```
+
+
+
 ## 🧠 Estrutura dos Objetos
 
 ### Documento (Document)
